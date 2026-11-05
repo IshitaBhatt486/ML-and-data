@@ -1,0 +1,111 @@
+# Predicting Telecom Customer Churn
+
+## Business Problem
+
+A telecom company wants to identify customers who are likely to cancel their service in the next 60 days. Early identification allows the company to offer targeted retention actions, such as discounts, plan changes, or support interventions.
+
+The dependent variable is **Customer Churn**. It is binary: `1` indicates that a customer churned or cancelled service, and `0` indicates that the customer was retained.
+
+A logistic probability function was used to calculate each customer’s likelihood of churn. Churn probability was set to increase for customers with shorter tenure, higher monthly charges, month-to-month contracts, more support tickets, and electronic-check payments. It was set to decrease for customers with longer tenure, two-year contracts, and higher monthly data usage.
+
+A random draw based on that calculated probability assigned the final churn value. These relationships are plausible because customers who are newer, pay more, experience more service problems, or have no long-term contract may be more likely to leave.
+
+### Independent Variables
+
+| Variable | Description | Why It May Influence Churn |
+|---|---|---|
+| `TenureMonths` | Months with the company | Newer customers may be less loyal and more likely to change providers. |
+| `MonthlyCharges` | Monthly telecom bill | High charges may increase dissatisfaction and encourage customers to seek alternatives. |
+| `ContractType` | Month-to-month, one-year, or two-year contract | Longer contracts create commitment and can reduce the ease of leaving. |
+| `SupportTicketsLast6Months` | Support requests or complaints in the previous six months | Frequent issues can indicate dissatisfaction with the service. |
+| `PaymentMethod` | Method used to pay the bill | Payment behaviour may be associated with convenience or customer engagement. |
+| `AvgMonthlyDataGB` | Average monthly data usage | Higher usage may signal that the customer sees greater value in the service. |
+
+## Logistic Regression Model
+
+A reproducible random seed of `123` was used before splitting the data.
+
+### Dataset Split
+
+| Dataset | Observations | Share of Data |
+|---|---:|---:|
+| Training data | 175 | 70% |
+| Testing data | 75 | 30% |
+| **Total** | **250** | **100%** |
+
+The logistic regression model was trained using `TenureMonths`, `MonthlyCharges`, `ContractType`, `SupportTicketsLast6Months`, `PaymentMethod`, and `AvgMonthlyDataGB`. `CustomerID` was excluded because it is only an identifier.
+
+The reference categories were `Retained` for the outcome, `Month-to-month` for `ContractType`, and `Bank transfer` for `PaymentMethod`.
+
+The fitted model estimates the probability that a customer belongs to the `Churned` class. Tenure, monthly charges, contract type, support tickets, and average monthly data usage were statistically significant predictors. Payment method was not statistically significant after controlling for the other predictors.
+
+### Estimated Model Coefficients
+
+| Predictor | Estimated Coefficient | Direction and Interpretation |
+|---|---:|---|
+| Intercept | -3.468 | Baseline log-odds of churn for a month-to-month customer using bank transfer when numeric predictors are zero. |
+| `TenureMonths` | -0.045 | Negative: longer customer tenure is associated with lower churn likelihood. |
+| `MonthlyCharges` | 0.051 | Positive: higher monthly charges are associated with higher churn likelihood. |
+| `ContractTypeOne year` | -2.216 | Negative: one-year contract customers are less likely to churn than month-to-month customers. |
+| `ContractTypeTwo year` | -1.829 | Negative: two-year contract customers are less likely to churn than month-to-month customers. |
+| `SupportTicketsLast6Months` | 0.452 | Positive: more support tickets are associated with higher churn likelihood. |
+| `PaymentMethodCredit card` | -0.442 | Negative: credit-card customers have lower estimated churn odds than bank-transfer customers, though this effect was not statistically significant. |
+| `PaymentMethodElectronic check` | 0.169 | Positive: electronic-check customers have slightly higher estimated churn odds than bank-transfer customers, though this effect was not statistically significant. |
+| `PaymentMethodMailed check` | 0.555 | Positive: mailed-check customers have higher estimated churn odds than bank-transfer customers, though this effect was not statistically significant. |
+| `AvgMonthlyDataGB` | -0.028 | Negative: higher average monthly data usage is associated with lower churn likelihood. |
+
+### Model Performance
+
+Predicted churn probabilities were generated for the testing dataset. A classification threshold of `0.50` was applied: customers with a predicted probability of `0.50` or greater were classified as `Churned`; all other customers were classified as `Retained`.
+
+#### Confusion Matrix
+
+| Actual Class | Predicted Retained | Predicted Churned |
+|---|---:|---:|
+| Retained | 52 | 6 |
+| Churned | 9 | 8 |
+
+The model correctly classified 52 retained customers and 8 churned customers. It incorrectly classified 6 retained customers as churners and missed 9 customers who actually churned.
+
+#### Performance Measures
+
+| Measure | Value | Interpretation |
+|---|---:|---|
+| Accuracy | 0.800 | The model correctly classified 80.0% of customers in the test set. |
+| Precision | 0.571 | Among predicted churners, 57.1% actually churned. |
+| Recall or Sensitivity | 0.471 | The model identified 47.1% of actual churners. |
+| Specificity | 0.897 | The model correctly identified 89.7% of retained customers. |
+| F1-score | 0.516 | The balance between precision and recall was moderate. |
+
+#### Model Fit
+
+| Criterion | Result | Interpretation |
+|---|---:|---|
+| AIC | 139.47 | Useful when comparing models fitted to the same data. Lower values indicate a better fit-complexity trade-off. |
+| McFadden Pseudo R-squared | 0.282 | The fitted model improved meaningfully over a model with no predictors. |
+
+The residual deviance decreased from `166.49` for the null model to `119.47` for the fitted model, providing additional evidence that the predictors improved model fit.
+
+## Interpretation and Reflection
+
+The model performs reasonably well as an initial churn-screening tool.
+
+Its accuracy of 80.0% and specificity of 89.7% show that it identifies retained customers effectively. This can help avoid unnecessary retention offers for customers who are unlikely to churn.
+
+However, recall was only 47.1%, so the model missed 9 of 17 actual churners in the test set.
+
+Because missing a likely churner can be costly, the model should not be the sole basis for retention decisions. The business could test a lower classification threshold, such as `0.30` or `0.40`, to identify more possible churners while accepting more false-positive predictions.
+
+### Limitation
+
+The main limitation is that the dataset is synthetic. Its relationships were deliberately built into the churn-generation process, so the training and test data follow similar patterns.
+
+Real-world churn may also depend on competitor promotions, network quality, service outages, satisfaction, income, and location. Model performance may therefore be weaker on real customer data.
+
+## Packages
+
+No external R packages were used for this implementation. The analysis uses functions included with a standard R installation. The built-in packages are normally loaded automatically when R starts.
+
+## Conclusion
+
+In conclusion, the logistic regression model identified meaningful churn drivers and achieved good overall accuracy. It is useful for prioritising retention outreach, but its modest recall indicates that additional predictors, real data, and threshold testing are needed before operational deployment.
