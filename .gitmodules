@@ -1,0 +1,3 @@
+[submodule "Transformer-using-pytorch"]
+	path = Transformer-using-pytorch
+	url = https://github.com/IshitaBhatt486/Transformer-from-scratch-using-PyTorch.git
