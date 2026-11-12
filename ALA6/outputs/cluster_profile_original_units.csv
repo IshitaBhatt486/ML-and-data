@@ -1,0 +1,5 @@
+"cluster","n_stores","orders_per_month","avg_order_value_inr","credit_days","sku_breadth","return_pct","segment"
+1,44,14.8,5953.9,6.7,85.7,2,"High-Velocity Neighbourhood Stores"
+2,51,3.9,4628.8,18.7,39,3.4,"Low-Frequency Basic Stores"
+3,35,4.9,32325.1,26,109,1.7,"Bulk Wholesale-Retailers"
+4,20,2.3,5291.5,54.3,39.3,10.7,"Credit-Risk Stores"

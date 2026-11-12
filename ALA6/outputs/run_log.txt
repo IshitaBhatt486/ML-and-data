@@ -1,0 +1,185 @@
+﻿Rows: 150  Columns: 7 
+
+'data.frame':	150 obs. of  7 variables:
+ $ store_id           : chr  "KS001" "KS002" "KS003" "KS004" ...
+ $ beat               : chr  "West" "North" "Rural-2" "East" ...
+ $ orders_per_month   : int  20 5 5 14 3 3 5 5 5 17 ...
+ $ avg_order_value_inr: int  6370 4610 5490 4240 22530 4330 5600 37830 27720 8560 ...
+ $ credit_days        : int  9 15 35 7 40 65 30 23 38 6 ...
+ $ sku_breadth        : int  95 19 37 91 115 50 39 133 112 72 ...
+ $ return_pct         : num  1.3 1.9 1.2 1.1 2 9.3 3.5 2 2 2.2 ...
+
+Summary (before cleaning):
+      store_id          beat     orders_per_month avg_order_value_inr
+ Length   :150   Length   :150   Min.   : 1.000   Min.   : 2200      
+ N.unique :150   N.unique :  6   1st Qu.: 3.000   1st Qu.: 4505      
+ N.blank  :  0   N.blank  :  0   Median : 5.000   Median : 5820      
+ Min.nchar:  5   Min.nchar:  4   Mean   : 7.127   Mean   :11646      
+ Max.nchar:  5   Max.nchar:  7   3rd Qu.:12.000   3rd Qu.: 8748      
+                                 Max.   :20.000   Max.   :42640      
+                                                  NAs    :2          
+  credit_days      sku_breadth       return_pct     
+ Min.   :-11.00   Min.   : 19.00   Min.   :  0.600  
+ 1st Qu.:  9.00   1st Qu.: 38.00   1st Qu.:  1.700  
+ Median : 18.00   Median : 72.00   Median :  2.400  
+ Mean   : 21.34   Mean   : 69.07   Mean   :  5.105  
+ 3rd Qu.: 28.25   3rd Qu.: 94.00   3rd Qu.:  3.500  
+ Max.   : 76.00   Max.   :172.00   Max.   :125.000  
+ NAs    :2        NAs    :1        NAs    :1        
+
+Missing values per column:
+           store_id                beat    orders_per_month avg_order_value_inr 
+                  0                   0                   0                   2 
+        credit_days         sku_breadth          return_pct 
+                  2                   1                   1 
+
+Invalid values found (row numbers):
+$orders_per_month
+integer(0)
+
+$avg_order_value_inr
+integer(0)
+
+$credit_days
+[1] 20 95
+
+$sku_breadth
+integer(0)
+
+$return_pct
+[1]  44 120
+
+
+Cleaning log:
+           attribute missing invalid median_used
+    orders_per_month       0       0         5.0
+ avg_order_value_inr       2       0      5820.0
+         credit_days       2       2        18.0
+         sku_breadth       1       0        72.0
+          return_pct       1       2         2.3
+
+Missing values after cleaning: 0 
+
+Scale of the raw attributes (very different units/ranges):
+     orders_per_month avg_order_value_inr credit_days sku_breadth return_pct
+mean             7.13            11568.33       21.63       69.09       3.56
+sd               5.34            11836.19       16.18       32.53       3.32
+min              1.00             2200.00        0.00       19.00       0.60
+max             20.00            42640.00       76.00      172.00      15.90
+
+After scaling - means ~0 and sds = 1:
+     orders_per_month avg_order_value_inr credit_days sku_breadth return_pct
+mean                0                   0           0           0          0
+sd                  1                   1           1           1          1
+
+Distance matrix:  150 x 150 
+      KS001 KS002 KS003 KS004 KS005
+KS001  0.00  3.68  3.70  1.15  4.01
+KS002  3.68  0.00  1.37  2.84  3.68
+KS003  3.70  1.37  0.00  2.93  2.85
+KS004  1.15  2.84  2.93  0.00  3.38
+KS005  4.01  3.68  2.85  3.38  0.00
+null device 
+          1 
+null device 
+          1 
+
+Single linkage - top merge heights:
+ k_if_cut_below merge_height gap_to_next
+              2        1.906       0.865
+              3        1.041       0.112
+              4        0.930       0.060
+              5        0.870       0.014
+              6        0.855       0.004
+              7        0.851       0.001
+              8        0.851       0.019
+              9        0.831          NA
+
+Complete linkage - top merge heights:
+ k_if_cut_below merge_height gap_to_next
+              2        7.019       1.234
+              3        5.786       1.006
+              4        4.780       1.471
+              5        3.309       0.062
+              6        3.247       0.337
+              7        2.910       0.428
+              8        2.481       0.184
+              9        2.297          NA
+
+Average silhouette widths:
+  linkage k avg_silhouette   cluster_sizes n_negative_sil
+   single 2          0.396          115/35              0
+   single 3          0.332        115/34/1              2
+   single 4          0.265      112/34/3/1             23
+   single 5          0.167    109/34/3/1/3             32
+   single 6          0.375  45/64/34/3/1/3             22
+ complete 2          0.433          130/20              6
+ complete 3          0.491        95/35/20              5
+ complete 4          0.612     44/51/35/20              3
+ complete 5          0.537   44/51/29/20/6              6
+ complete 6          0.500 44/51/29/12/6/8              7
+null device 
+          1 
+null device 
+          1 
+null device 
+          1 
+
+Single-linkage cluster sizes at k = 4 :
+
+  1   2   3   4 
+112  34   3   1 
+
+Cross-tab: single (rows) vs complete (cols) at k = 4 
+      complete
+single  1  2  3  4
+     1 44 51  0 17
+     2  0  0 34  0
+     3  0  0  0  3
+     4  0  0  1  0
+null device 
+          1 
+
+Average silhouette width per cluster:
+    1     2     3     4 
+0.676 0.584 0.626 0.516 
+Overall average silhouette width: 0.612 
+
+Stores with negative silhouette (possibly in the wrong cluster): 3 
+ store_id cluster neighbor sil_width
+    KS117       2        4    -0.081
+    KS143       2        4    -0.220
+    KS146       2        4    -0.077
+
+Cluster profile (means, original units):
+ cluster n_stores orders_per_month avg_order_value_inr credit_days sku_breadth
+       1       44             14.8              5953.9         6.7        85.7
+       2       51              3.9              4628.8        18.7        39.0
+       3       35              4.9             32325.1        26.0       109.0
+       4       20              2.3              5291.5        54.3        39.3
+ return_pct
+        2.0
+        3.4
+        1.7
+       10.7
+
+Cluster profile (mean z-scores):
+ cluster orders_per_month avg_order_value_inr credit_days sku_breadth
+       1             1.44               -0.47       -0.92        0.51
+       2            -0.60               -0.59       -0.18       -0.92
+       3            -0.42                1.75        0.27        1.23
+       4            -0.90               -0.53        2.02       -0.92
+ return_pct
+      -0.46
+      -0.06
+      -0.57
+       2.17
+null device 
+          1 
+
+Labelled segments:
+ cluster                            segment n_stores
+       1 High-Velocity Neighbourhood Stores       44
+       2         Low-Frequency Basic Stores       51
+       3           Bulk Wholesale-Retailers       35
+       4                 Credit-Risk Stores       20
