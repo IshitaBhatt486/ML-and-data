@@ -1,0 +1,112 @@
+{
+  "spotify_tracks_genre": {
+    "title": "Spotify Tracks Dataset (M. Pandya)",
+    "url": "https://www.kaggle.com/api/v1/datasets/download/maharshipandya/-spotify-tracks-dataset",
+    "page": "https://www.kaggle.com/datasets/maharshipandya/-spotify-tracks-dataset",
+    "licence": "Kaggle listing: Open Database License; contents (c) original authors",
+    "role": "Genre labels, popularity snapshot and audio features",
+    "file": "spotify_tracks_genre.zip",
+    "bytes": 8571542,
+    "sha256": "be5216c0c811283c5db3e3af83cffa59873cc5fa375222f3280782776e289176",
+    "retrieved_utc": "2026-11-18T23:15:40+00:00"
+  },
+  "spotify_catalogue": {
+    "title": "Spotify 1.2M+ Songs (R. Figueroa)",
+    "url": "https://www.kaggle.com/api/v1/datasets/download/rodolfofigueroa/spotify-12m-songs",
+    "page": "https://www.kaggle.com/datasets/rodolfofigueroa/spotify-12m-songs",
+    "licence": "Kaggle listing: Unknown. Used for analysis only; no rows are republished",
+    "role": "Broad-catalogue baseline by release year",
+    "file": "spotify_catalogue.zip",
+    "bytes": 102161675,
+    "sha256": "7e8bd3801741cae4347df197cb3ceb2bb156a912faf0559da871df0f28ba94f5",
+    "retrieved_utc": "2026-11-18T23:15:55+00:00"
+  },
+  "spotify_1m": {
+    "title": "Spotify 1 Million Tracks (A. Joshi)",
+    "url": "https://www.kaggle.com/api/v1/datasets/download/amitanshjoshi/spotify-1million-tracks",
+    "page": "https://www.kaggle.com/datasets/amitanshjoshi/spotify-1million-tracks",
+    "licence": "Kaggle listing: Open Database License; contents (c) original authors",
+    "role": "Popularity across a broad 2000-2023 catalogue sample",
+    "file": "spotify_1m.zip",
+    "bytes": 80841459,
+    "sha256": "93fb1a6bc283c0803a5033ea9f66816ed882394b80148b3a8c66029e18be403a",
+    "retrieved_utc": "2026-11-18T23:16:08+00:00"
+  },
+  "charts_2017_2021": {
+    "title": "Spotify Charts 2017-2021 (D. Dave)",
+    "url": "https://www.kaggle.com/api/v1/datasets/download/dhruvildave/spotify-charts",
+    "page": "https://www.kaggle.com/datasets/dhruvildave/spotify-charts",
+    "licence": "Kaggle listing: Open Database License; contents (c) original authors",
+    "role": "Daily Top 200 rank and stream counts by region",
+    "file": "charts_2017_2021.zip",
+    "bytes": 991225045,
+    "sha256": "eac3803b6f46b60fccc97abf58d32bb0805b6ae591ef293daeb9947821320e1d",
+    "retrieved_utc": "2026-11-18T23:17:23+00:00"
+  },
+  "charts_2023_2025": {
+    "title": "Top Spotify Songs in 73 Countries (asaniczka)",
+    "url": "https://www.kaggle.com/api/v1/datasets/download/asaniczka/top-spotify-songs-in-73-countries-daily-updated",
+    "page": "https://www.kaggle.com/datasets/asaniczka/top-spotify-songs-in-73-countries-daily-updated",
+    "licence": "ODC Attribution License (ODC-By)",
+    "role": "Daily Top 50 by country with audio features",
+    "file": "charts_2023_2025.zip",
+    "bytes": 169690238,
+    "sha256": "e048c4726c7ffb0c4e50827b459b760e98561f07202d6efb586f69fc962902ef",
+    "retrieved_utc": "2026-11-18T23:17:24+00:00"
+  },
+  "billboard_weekly": {
+    "title": "Billboard Hot 100 weekly history (TidyTuesday / Data.World)",
+    "url": "https://raw.githubusercontent.com/rfordatascience/tidytuesday/master/data/2021/2021-09-14/billboard.csv",
+    "page": "https://github.com/rfordatascience/tidytuesday/tree/master/data/2021/2021-09-14",
+    "licence": "TidyTuesday repository CC0-1.0; underlying chart facts from Billboard",
+    "role": "Mainstream chart history from 1958",
+    "file": "billboard.csv",
+    "bytes": 45795376,
+    "sha256": "4be671b1b0d3b194867b776e8250bdc82c180ba321b05e240a84efdcf47f8782",
+    "retrieved_utc": "2026-11-18T23:17:24+00:00"
+  },
+  "billboard_audio": {
+    "title": "Audio features for Billboard songs (TidyTuesday)",
+    "url": "https://raw.githubusercontent.com/rfordatascience/tidytuesday/master/data/2021/2021-09-14/audio_features.csv",
+    "page": "https://github.com/rfordatascience/tidytuesday/tree/master/data/2021/2021-09-14",
+    "licence": "TidyTuesday repository CC0-1.0; features originate from the Spotify API",
+    "role": "Spotify IDs and audio features for Hot 100 songs",
+    "file": "billboard_audio_features.csv",
+    "bytes": 10129304,
+    "sha256": "6553dd7acbed4535e7a875fb292c2b6d8c8258713e34ee1dd9f0fb90639e6619",
+    "retrieved_utc": "2026-11-18T23:17:24+00:00"
+  },
+  "lastfm_tags_1": {
+    "title": "Music Tags Dataset, Last.fm part 1 (tranbren)",
+    "url": "https://github.com/tranbren/MusicTagsDataset/raw/main/lastfm_metadata.zip",
+    "page": "https://github.com/tranbren/MusicTagsDataset",
+    "licence": "Repository README: educational, research and non-commercial use with credit",
+    "role": "Human-assigned tags",
+    "file": "lastfm_metadata.zip",
+    "bytes": 20918251,
+    "sha256": "2bf367886acc58941cbc7db09764c6250f4d42af5146273f8680d4934531ee86",
+    "retrieved_utc": "2026-11-18T23:17:25+00:00"
+  },
+  "lastfm_tags_2": {
+    "title": "Music Tags Dataset, Last.fm part 2 (tranbren)",
+    "url": "https://github.com/tranbren/MusicTagsDataset/raw/main/lastfm_metadata_2.zip",
+    "page": "https://github.com/tranbren/MusicTagsDataset",
+    "licence": "Repository README: educational, research and non-commercial use with credit",
+    "role": "Human-assigned tags",
+    "file": "lastfm_metadata_2.zip",
+    "bytes": 17452929,
+    "sha256": "d2b492a9cb68741d8a25634f7f660a62821ac31f6e514b57b50a80b4994dacdc",
+    "retrieved_utc": "2026-11-18T23:17:25+00:00"
+  },
+  "lastfm_tags_3": {
+    "title": "Music Tags Dataset, Last.fm part 3 (tranbren)",
+    "url": "https://github.com/tranbren/MusicTagsDataset/raw/main/lastfm_metadata_3.zip",
+    "page": "https://github.com/tranbren/MusicTagsDataset",
+    "licence": "Repository README: educational, research and non-commercial use with credit",
+    "role": "Human-assigned tags",
+    "file": "lastfm_metadata_3.zip",
+    "bytes": 13416967,
+    "sha256": "06443ab4bd7d682b4d73d92aabe12f18446e7badd15f0ada3f0f26b6c79948f2",
+    "retrieved_utc": "2026-11-18T23:17:26+00:00"
+  }
+}

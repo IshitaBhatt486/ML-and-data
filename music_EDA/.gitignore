@@ -1,0 +1,11 @@
+__pycache__/
+*.py[cod]
+.ipynb_checkpoints/
+.venv/
+
+# Raw and processed data normally live outside the repository (see README).
+data/
+*.parquet
+*.part
+
+internal-docs/
