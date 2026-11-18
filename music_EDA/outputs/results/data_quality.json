@@ -1,0 +1,381 @@
+{
+  "billboard": {
+    "weekly": {
+      "rows_raw": 327895,
+      "columns_used": [
+        "week_id",
+        "week_position",
+        "song",
+        "performer",
+        "song_id",
+        "instance"
+      ],
+      "missing_pct": {},
+      "invalid_audio_rows": 0,
+      "repeated_week_position_rows": 29,
+      "first_week": "1958-08-02",
+      "last_week": "2021-05-29",
+      "unique_songs": 29389
+    },
+    "audio": {
+      "rows_raw": 29503,
+      "columns_used": [
+        "song_id",
+        "performer",
+        "song",
+        "spotify_genre",
+        "track_id",
+        "spotify_track_preview_url",
+        "duration_ms",
+        "explicit",
+        "spotify_track_album",
+        "danceability",
+        "energy",
+        "key",
+        "loudness",
+        "mode",
+        "speechiness",
+        "acousticness",
+        "instrumentalness",
+        "liveness",
+        "valence",
+        "tempo",
+        "time_signature",
+        "popularity"
+      ],
+      "missing_pct": {
+        "spotify_genre": 5.423,
+        "track_id": 17.307,
+        "spotify_track_preview_url": 50.883,
+        "duration_ms": 17.307,
+        "explicit": 17.307,
+        "spotify_track_album": 17.327,
+        "danceability": 17.52,
+        "energy": 17.52,
+        "key": 17.52,
+        "loudness": 17.52,
+        "mode": 17.52,
+        "speechiness": 17.52,
+        "acousticness": 17.52,
+        "instrumentalness": 17.52,
+        "liveness": 17.52,
+        "valence": 17.52,
+        "tempo": 17.52,
+        "time_signature": 17.52,
+        "popularity": 17.307
+      },
+      "invalid_audio_rows": 77,
+      "repeated_song_id_rows": 117,
+      "rows_without_spotify_id": 5106,
+      "rows_clean": 24211
+    },
+    "join": {
+      "key": "song_id supplied by the source",
+      "songs": 29389,
+      "songs_matched": 24210,
+      "song_match_pct": 82.38,
+      "chart_slot_match_pct": 86.62
+    }
+  },
+  "charts_2017_2021": {
+    "rows_raw": 26173514,
+    "rows_top200": 20321904,
+    "repeated_slots": 0,
+    "rows_without_song_key": 1763,
+    "columns_used": [
+      "title",
+      "rank",
+      "date",
+      "artist",
+      "url",
+      "region",
+      "chart",
+      "streams"
+    ],
+    "regions": 68,
+    "first_date": "2017-01-01",
+    "last_date": "2021-12-31",
+    "song_region_quarter_rows": 619339,
+    "unique_songs": 102637
+  },
+  "charts_2023_2025": {
+    "rows_raw": 2110316,
+    "columns_used": [
+      "spotify_id",
+      "name",
+      "artists",
+      "daily_rank",
+      "country",
+      "popularity",
+      "is_explicit",
+      "duration_ms",
+      "album_release_date",
+      "danceability",
+      "energy",
+      "key",
+      "loudness",
+      "mode",
+      "speechiness",
+      "acousticness",
+      "instrumentalness",
+      "liveness",
+      "valence",
+      "tempo",
+      "time_signature",
+      "date"
+    ],
+    "missing_pct": {},
+    "invalid_audio_rows": 161,
+    "repeated_slot_rows": 0,
+    "rows_clean": 2106630,
+    "countries": 72,
+    "first_date": "2023-10-18",
+    "last_date": "2025-06-11",
+    "snapshot_days": 583,
+    "invalid_audio_pct_by_month": {
+      "2023-10": 0.0,
+      "2023-11": 0.02,
+      "2023-12": 0.0,
+      "2024-01": 0.0,
+      "2024-03": 0.0,
+      "2024-04": 0.0,
+      "2024-06": 0.02,
+      "2024-07": 0.03,
+      "2024-08": 0.03,
+      "2024-09": 0.01,
+      "2024-10": 0.0,
+      "2024-12": 0.0,
+      "2025-01": 0.0,
+      "2025-04": 0.02,
+      "2025-05": 0.01,
+      "2025-06": 0.0
+    }
+  },
+  "lastfm_tags": {
+    "rows_raw": 683010,
+    "columns_used": [
+      "artist",
+      "title",
+      "tag_year",
+      "tags"
+    ],
+    "missing_pct": {
+      "tag_year": 0.141,
+      "tags": 0.002
+    },
+    "invalid_audio_rows": 0,
+    "non_numeric_year_rows": 982,
+    "repeated_rows": 67956,
+    "rows_with_key": 613894,
+    "join": {
+      "key": "normalised lead artist + normalised title, release year within 1 year; multiple candidates accepted only if valence and energy agree within 0.05",
+      "matched_tracks": 594903,
+      "match_pct": 96.91,
+      "rejected_ambiguous_keys": 8518
+    }
+  },
+  "merge": {
+    "unique_spotify_ids": 2349340,
+    "ids_by_feature_source": {
+      "spotify_1m": 1115383,
+      "spotify_catalogue": 1103688,
+      "spotify_tracks_genre": 88924,
+      "charts_2023_2025": 24928,
+      "billboard_audio": 16417
+    },
+    "shared_ids_between_sources": {
+      "charts_2023_2025 / spotify_tracks_genre": 508,
+      "charts_2023_2025 / spotify_1m": 942,
+      "charts_2023_2025 / billboard_audio": 305,
+      "charts_2023_2025 / spotify_catalogue": 263,
+      "spotify_tracks_genre / spotify_1m": 36208,
+      "spotify_tracks_genre / billboard_audio": 1658,
+      "spotify_tracks_genre / spotify_catalogue": 4723,
+      "spotify_1m / billboard_audio": 6559,
+      "spotify_1m / spotify_catalogue": 79380,
+      "billboard_audio / spotify_catalogue": 4082
+    },
+    "feature_agreement_pearson": {
+      "charts_2023_2025 / spotify_tracks_genre": {
+        "shared_ids": 508,
+        "energy": 0.9993,
+        "valence": 0.9997,
+        "tempo": 0.9811,
+        "loudness": 0.9975
+      },
+      "charts_2023_2025 / spotify_1m": {
+        "shared_ids": 942,
+        "energy": 0.9996,
+        "valence": 0.9997,
+        "tempo": 0.9948,
+        "loudness": 0.9981
+      },
+      "charts_2023_2025 / billboard_audio": {
+        "shared_ids": 305,
+        "energy": 0.9974,
+        "valence": 0.9989,
+        "tempo": 0.9046,
+        "loudness": 0.9875
+      },
+      "charts_2023_2025 / spotify_catalogue": {
+        "shared_ids": 263,
+        "energy": 0.9991,
+        "valence": 0.9998,
+        "tempo": 1.0,
+        "loudness": 0.9975
+      },
+      "spotify_tracks_genre / spotify_1m": {
+        "shared_ids": 36208,
+        "energy": 1.0,
+        "valence": 1.0,
+        "tempo": 1.0,
+        "loudness": 1.0
+      },
+      "spotify_tracks_genre / billboard_audio": {
+        "shared_ids": 1658,
+        "energy": 0.9982,
+        "valence": 0.9961,
+        "tempo": 0.948,
+        "loudness": 0.9945
+      },
+      "spotify_tracks_genre / spotify_catalogue": {
+        "shared_ids": 4723,
+        "energy": 1.0,
+        "valence": 0.9999,
+        "tempo": 0.9929,
+        "loudness": 0.9998
+      },
+      "spotify_1m / billboard_audio": {
+        "shared_ids": 6559,
+        "energy": 0.9967,
+        "valence": 0.9951,
+        "tempo": 0.9388,
+        "loudness": 0.9911
+      },
+      "spotify_1m / spotify_catalogue": {
+        "shared_ids": 79380,
+        "energy": 1.0,
+        "valence": 0.9999,
+        "tempo": 0.9954,
+        "loudness": 0.9999
+      },
+      "billboard_audio / spotify_catalogue": {
+        "shared_ids": 4082,
+        "energy": 0.9954,
+        "valence": 0.9974,
+        "tempo": 0.989,
+        "loudness": 0.9854
+      }
+    },
+    "charts_2017_2021_to_audio": {
+      "songs_by_tier": {
+        "unmatched": 74654,
+        "spotify_id": 19080,
+        "artist_title_validated": 8903
+      },
+      "stream_share_pct_by_tier": {
+        "artist_title_validated": 16.08,
+        "spotify_id": 66.78,
+        "unmatched": 17.14
+      }
+    }
+  },
+  "spotify_1m": {
+    "rows_raw": 1159764,
+    "columns_used": [
+      "artist_name",
+      "track_name",
+      "track_id",
+      "popularity",
+      "year",
+      "genre",
+      "danceability",
+      "energy",
+      "key",
+      "loudness",
+      "mode",
+      "speechiness",
+      "acousticness",
+      "instrumentalness",
+      "liveness",
+      "valence",
+      "tempo",
+      "duration_ms",
+      "time_signature"
+    ],
+    "missing_pct": {
+      "artist_name": 0.001,
+      "track_name": 0.0
+    },
+    "invalid_audio_rows": 7489,
+    "repeated_track_id_rows": 0,
+    "rows_clean": 1152275,
+    "zero_popularity_pct": 13.47
+  },
+  "spotify_catalogue": {
+    "rows_raw": 1204025,
+    "columns_used": [
+      "track_id",
+      "name",
+      "artists",
+      "explicit",
+      "danceability",
+      "energy",
+      "key",
+      "loudness",
+      "mode",
+      "speechiness",
+      "acousticness",
+      "instrumentalness",
+      "liveness",
+      "valence",
+      "tempo",
+      "duration_ms",
+      "time_signature",
+      "year"
+    ],
+    "missing_pct": {
+      "name": 0.0
+    },
+    "invalid_audio_rows": 16259,
+    "implausible_year_rows": 120,
+    "repeated_track_id_rows": 0,
+    "rows_clean": 1187646
+  },
+  "spotify_tracks_genre": {
+    "rows_raw": 114000,
+    "columns_used": [
+      "track_id",
+      "artists",
+      "album_name",
+      "track_name",
+      "popularity",
+      "duration_ms",
+      "explicit",
+      "danceability",
+      "energy",
+      "key",
+      "loudness",
+      "mode",
+      "speechiness",
+      "acousticness",
+      "instrumentalness",
+      "liveness",
+      "valence",
+      "tempo",
+      "time_signature",
+      "track_genre"
+    ],
+    "missing_pct": {
+      "artists": 0.001,
+      "album_name": 0.001,
+      "track_name": 0.001
+    },
+    "invalid_audio_rows": 323,
+    "repeated_track_id_rows": 24259,
+    "rows_clean": 113229,
+    "unique_tracks_clean": 89432,
+    "genres": 114,
+    "tracks_with_multiple_genres": 16287
+  }
+}

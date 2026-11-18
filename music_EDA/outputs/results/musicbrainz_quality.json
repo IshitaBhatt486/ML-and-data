@@ -1,0 +1,19 @@
+{
+  "source": "MusicBrainz web service, artist search (core data CC0)",
+  "artists_requested": 300,
+  "queried_now": 169,
+  "status_counts": {
+    "resolved": 152,
+    "not_queried": 131,
+    "no_country": 7,
+    "no_exact_match": 7,
+    "ambiguous": 3
+  },
+  "resolved_share_of_all_chart_days_pct": 47.09,
+  "queried_share_of_all_chart_days_pct": 50.13,
+  "origin_outside_study_markets": [
+    "GY",
+    "JM",
+    "PR"
+  ]
+}
